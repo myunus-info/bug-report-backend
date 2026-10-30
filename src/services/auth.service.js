@@ -48,6 +48,10 @@ const login = async ({ email, password }) => {
   const user = await User.findOne({ email });
   if (!user) throw new Error("Invalid email or password");
 
+  if (user.isBanned) {
+    throw new Error("Your account has been suspended. Please contact support.");
+  }
+
   // Compare hashed password with bcrypt
   const match = await bcrypt.compare(password, user.passwordHash);
   if (!match) throw new Error("Invalid email or password");
