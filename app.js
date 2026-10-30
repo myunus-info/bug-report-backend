@@ -16,11 +16,12 @@ const quizRoutes = require("./src/routes/quiz.routes");
 const errorHandler = require("./src/middlewares/errorMiddleware");
 // importing user model to ensure it's registered
 const userRoutes = require("./src/routes/user.routes");
+const morgan = require("morgan");
 
 const connectDB = require("./src/config/db");
 
 // Connect to database (non-blocking for serverless)
-connectDB().catch((err) => {
+connectDB().catch(err => {
   console.error("Initial DB connection failed:", err.message);
   // Don't throw - let individual requests handle connection
 });
@@ -29,13 +30,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: true,
+    origin: "http://localhost:5173",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-  })
+  }),
 );
 app.use(express.json());
+app.use(morgan("dev"));
 
 // Middleware to ensure DB connection before handling requests
 app.use(async (req, res, next) => {
@@ -67,7 +69,6 @@ app.use("/api/assignments", assignmentRoutes);
 app.use("/api/quizzes", quizRoutes);
 // mounting user routes
 app.use("/api/users", userRoutes);
-
 
 // 404 handler (unknown routes)
 app.use((req, res) => {
