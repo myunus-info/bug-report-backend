@@ -2,38 +2,40 @@
 
 **Project:** CourseMaster Backend REST API (`courseMaster_Backend`)  
 **Technology Stack:** Node.js, Express 5, MongoDB, Mongoose, JWT, bcrypt, Zod  
-**Repository:** [https://github.com/Pullock4981/courseMaster_Backend](https://github.com/Pullock4981/courseMaster_Backend)  
+**Repository:** [https://github.com/myunus-info/bug-report-backend/](https://github.com/myunus-info/bug-report-backend/)  
 **Total Identified Bugs:** 10  
-**Status:** All 10 Bugs Fixed & Verified (100% Resolved)  
+**Status:** All 10 Bugs Fixed & Verified (100% Resolved)
 
 ---
 
 ## 1. Backend Bug Summary Table
 
-| Bug ID | Title | Severity | Priority | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **BUG-BE-001** | Plaintext Password Comparison in Login Service (`===` instead of `bcrypt.compare`) | Critical | P1 | Fixed & Verified |
-| **BUG-BE-002** | Custom CORS Header Restricts Methods to `GET, POST`, Blocking `PUT`, `DELETE`, and `PATCH` | Critical | P1 | Fixed & Verified |
-| **BUG-BE-003** | Inverted Enrollment Logic Throws Error When User Is Not Enrolled | Critical | P1 | Fixed & Verified |
-| **BUG-BE-004** | JWT Verification Fail-Open Middleware Calls `next()` on Invalid or Expired Token | Critical | P1 | Fixed & Verified |
-| **BUG-BE-005** | Unrestricted Role Assignment During Registration (Bypasses Admin Key Verification) | High | P1 | Fixed & Verified |
-| **BUG-BE-006** | Assignment Filter Queries Schema by `courseId` Instead of Schema Field `course` | High | P2 | Fixed & Verified |
-| **BUG-BE-007** | Quiz Score Multiplied by 10 Instead of 100 (100% Calculated as 10%) | High | P2 | Fixed & Verified |
-| **BUG-BE-008** | Missing `await` on Asynchronous Mongoose `enrollment.save()` in Lesson Completion | Medium | P2 | Fixed & Verified |
-| **BUG-BE-009** | Backend `.env.example` Overwritten with Frontend Environment Variables | High | P1 | Fixed & Verified |
-| **BUG-BE-010** | Banned User Account Status Ignored During Login Authentication | High | P2 | Fixed & Verified |
+| Bug ID         | Title                                                                                      | Severity | Priority | Status           |
+| :------------- | :----------------------------------------------------------------------------------------- | :------- | :------- | :--------------- |
+| **BUG-BE-001** | Plaintext Password Comparison in Login Service (`===` instead of `bcrypt.compare`)         | Critical | P1       | Fixed & Verified |
+| **BUG-BE-002** | Custom CORS Header Restricts Methods to `GET, POST`, Blocking `PUT`, `DELETE`, and `PATCH` | Critical | P1       | Fixed & Verified |
+| **BUG-BE-003** | Inverted Enrollment Logic Throws Error When User Is Not Enrolled                           | Critical | P1       | Fixed & Verified |
+| **BUG-BE-004** | JWT Verification Fail-Open Middleware Calls `next()` on Invalid or Expired Token           | Critical | P1       | Fixed & Verified |
+| **BUG-BE-005** | Unrestricted Role Assignment During Registration (Bypasses Admin Key Verification)         | High     | P1       | Fixed & Verified |
+| **BUG-BE-006** | Assignment Filter Queries Schema by `courseId` Instead of Schema Field `course`            | High     | P2       | Fixed & Verified |
+| **BUG-BE-007** | Quiz Score Multiplied by 10 Instead of 100 (100% Calculated as 10%)                        | High     | P2       | Fixed & Verified |
+| **BUG-BE-008** | Missing `await` on Asynchronous Mongoose `enrollment.save()` in Lesson Completion          | Medium   | P2       | Fixed & Verified |
+| **BUG-BE-009** | Backend `.env.example` Overwritten with Frontend Environment Variables                     | High     | P1       | Fixed & Verified |
+| **BUG-BE-010** | Banned User Account Status Ignored During Login Authentication                             | High     | P2       | Fixed & Verified |
 
 ---
 
 ## 2. Severity & Priority Guidelines
 
 ### Severity Guidelines
+
 - **Critical:** A major feature is unusable, the application crashes, data corruption occurs, or there is a severe security vulnerability breaking authentication.
 - **High:** An important feature fails or produces significantly incorrect behavior.
 - **Medium:** A feature works incorrectly, but a workaround exists.
 - **Low:** A minor issue or low-impact functional inconsistency.
 
 ### Priority Guidelines
+
 - **P1:** Fix immediately (Blocker / Core Auth / Security).
 - **P2:** Fix as soon as possible (Core Business Logic / Data Integrity).
 - **P3:** Fix when higher-priority issues are resolved.
@@ -162,11 +164,3 @@
 **Fix & Verification Status:** Added `if (user.isBanned) throw new Error("Your account has been suspended. Please contact support.");` before generating JWT tokens. Status: Fixed & Verified.
 
 ---
-
-## 4. Instructions for Google Docs Submission
-
-1. Open a new document at [Google Docs](https://docs.new).
-2. Title the document: **CourseMaster Backend — Bug Report & Debugging Documentation**.
-3. Copy the entire contents of this document and paste directly into Google Docs.
-4. Set access permissions to **"Anyone with the link can view"**.
-5. Copy the sharing link as your final Backend Bug Report deliverable.
