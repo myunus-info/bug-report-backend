@@ -30,7 +30,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
@@ -39,7 +39,12 @@ app.use(
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Middleware to ensure DB connection before handling requests
+// health check (accessible immediately without blocking on DB)
+app.get("/", (req, res) => {
+  res.send("Course Master Backend Running ✅");
+});
+
+// Middleware to ensure DB connection before handling API requests
 app.use(async (req, res, next) => {
   try {
     await connectDB();
@@ -48,11 +53,6 @@ app.use(async (req, res, next) => {
     console.error("Database connection middleware error:", err.message);
     res.status(500).json({ message: "Database connection failed", error: err.message });
   }
-});
-
-// health check
-app.get("/", (req, res) => {
-  res.send("Course Master Backend Running ✅");
 });
 
 // mounting auth routes

@@ -35,7 +35,7 @@ const connectDB = async () => {
   try {
     // Connect with options optimized for serverless
     const connection = await mongoose.connect(uri, {
-      serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+      serverSelectionTimeoutMS: 10000, // 10s timeout for serverless cold starts
       socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
     });
     
