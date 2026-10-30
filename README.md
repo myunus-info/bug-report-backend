@@ -98,7 +98,7 @@ FRONTEND_URL=http://localhost:5173
 
 ## API Documentation
 
-Base URL: `http://localhost:5000/api/api`
+Base URL: `http://localhost:5000/api`
 
 ### Authentication Endpoints
 
